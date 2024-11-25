@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commission Assignment</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+
+
+    <script>
+
+
+        let salesSum = 0;
+        let input;
+
+        let name = prompt("What is your name?");
+
+        do {
+            input = prompt('Hi '+ name +', please enter the dollar amount of your sales as a single sale at a time. Enter Done when you are finished');
+            if (input && input.toLowerCase() === "done") {
+                break;
+            }
+            if (!input || isNaN(parseFloat(input))) {
+                alert('Please enter a valid number of "Done" to finish');
+                continue;
+            }
+            salesSum += parseFloat(input);
+
+        } while (true);
+
+        let commissionRate = 0;
+
+
+        if (salesSum > 0 && salesSum <= 499.99) {
+            commissionRate = 0.05;
+
+        } else if (salesSum >= 500 && salesSum <= 999.99) {
+            commissionRate = 0.1;
+
+        } else if (salesSum >= 1000) {
+            commissionRate = 0.15;
+
+        }
+
+        const totalCommission = salesSum * commissionRate;
+        const totalEarnings = totalCommission + salesSum;
+
+        document.write(`
+<h1>Hello, Here is your weekly commission Report</h1>
+<div id="display">
+
+    <div class="display-card">
+    <p>Your sales total is $${salesSum.toFixed(2)}</p>
+    </div>
+
+    <div class="display-card">
+    <p>Your commission rate: ${(commissionRate * 100).toFixed(2)}%</p>
+    </div>
+
+    <div class="display-card">
+    <p>Your total commission is: $${totalCommission.toFixed(2)}</p>
+    </div>
+    <div class="display-card">
+    <p>Your total earnings are: $${totalEarnings.toFixed(2)}</p>
+    </div>
+    
+
+</div>
+
+`)
+
+    </script>
+</body>
+
+</html>
